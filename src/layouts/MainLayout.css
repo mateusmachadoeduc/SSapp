@@ -1,0 +1,248 @@
+:root {
+  --bg-main: #0a0a0a;
+  --bg-panel: #111111;
+  --bg-panel-soft: #171717;
+  --bg-card: #141414;
+  --gold: #d4af37;
+  --gold-soft: #b8932f;
+  --text-main: #ffffff;
+  --text-soft: #d1d5db;
+  --text-muted: #9ca3af;
+  --border-soft: rgba(212, 175, 55, 0.2);
+  --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.app-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 25%),
+    var(--bg-main);
+}
+
+.topbar {
+  height: 68px;
+  background: rgba(10, 10, 10, 0.96);
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  backdrop-filter: blur(8px);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-toggle,
+.close-menu {
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  font-size: 28px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.menu-toggle:hover,
+.close-menu:hover {
+  color: var(--gold);
+}
+
+.brand-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-inline-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-soft);
+}
+
+.brand-inline-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-main {
+  color: var(--text-main);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.brand-sub {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.app-body {
+  display: flex;
+  position: relative;
+}
+
+.sidebar {
+  width: 285px;
+  background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+  color: var(--text-main);
+  padding: 20px 16px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 68px;
+  left: -305px;
+  height: calc(100vh - 68px);
+  overflow-y: auto;
+  transition: left 0.25s ease;
+  z-index: 1200;
+  border-right: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-dark);
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.15);
+}
+
+.sidebar-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  margin: 0;
+  font-size: 26px;
+  color: var(--text-main);
+}
+
+.logo-subtitle {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--gold);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-title {
+  margin: 18px 0 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.menu-link {
+  color: var(--text-main);
+  text-decoration: none;
+  padding: 13px 14px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.menu-link:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.14);
+  color: var(--gold);
+}
+
+.menu-link.active {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.1));
+  color: var(--gold);
+  border-color: rgba(212, 175, 55, 0.35);
+  font-weight: 600;
+}
+
+.content {
+  width: 100%;
+  padding: 18px 14px;
+  box-sizing: border-box;
+}
+
+.content-card {
+  min-height: calc(100vh - 104px);
+  background: linear-gradient(180deg, #141414 0%, #101010 100%);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 20px 16px;
+  box-shadow: var(--shadow-dark);
+  color: var(--text-main);
+}
+
+.backdrop {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 68px);
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1150;
+}
+
+@media (min-width: 900px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .close-menu {
+    display: none;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 68px;
+    left: 0;
+    height: calc(100vh - 68px);
+    flex-shrink: 0;
+  }
+
+  .content {
+    padding: 24px;
+  }
+
+  .content-card {
+    padding: 24px;
+  }
+
+  .backdrop {
+    display: none;
+  }
+}
